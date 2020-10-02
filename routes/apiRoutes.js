@@ -40,9 +40,24 @@ module.exports = (app) => {
                 id = id + 1;
                 newBody[i].id = id;
                 db.push(newBody[i]);
-            }
+            };
             
-        })
+        });
+        fs.writeFile("./db/db.json", JSON.stringify(db), (err) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).json({
+                    error: true,
+                    data: null,
+                    message: "Unable wrote to JSON file",
+                });
+            };
+            res.json({
+                error: false,
+                data: newBody,
+                message: "Successfully wrote note"
+            });
+        });
 
-    })
+    });
 };
