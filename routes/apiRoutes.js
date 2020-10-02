@@ -34,9 +34,9 @@ module.exports = (app) => {
                     message: "Unable to retrieve note"
                 });
             };
-            const id = 0;
-            const newBody = req.body;
             for (let i = 0; i < db.length; i++) {
+                const id = 0;
+                const newBody = req.body;
                 id = id + 1;
                 newBody[i].id = id;
                 db.push(newBody[i]);
